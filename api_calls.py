@@ -1,12 +1,29 @@
 from pycoingecko import CoinGeckoAPI
+import etherscan
 
 cg = CoinGeckoAPI()
 
 btc = 'bitcoin'
-eth = 'ethereum'
 uni = 'uniswap'
 link = 'chainlink'
-coins = [btc, eth, uni, link]
+coins = [btc, uni, link]
+
+es = etherscan.Client(
+    api_key='**************',
+    cache_expire_after=5,
+)
+wallet = es.get_eth_balance('********')
+wei = wallet * 10 **-18
+gas = es.get_gas_price()
+eth_price = es.get_eth_price()
+
+eth_usd = []
+for i in eth_price:
+    eth_usd.append(eth_price[i])
+print("Ethereum: ", eth_usd[2])
+print(gas * 10 ** -9, ' GWEI')
+print(wei, ' ETH')
+print(round(wei * eth_usd[2], 2), " USD")
 
 
 def print_list():
@@ -28,7 +45,7 @@ def user_input():
     if new in coins:
         print('Already exists in the list\n')
         user_input()
-    # appends list and prints updated list
+    # appends and prints updated list
     else:
         coins.append(new)
         k = 0
