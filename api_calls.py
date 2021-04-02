@@ -21,20 +21,20 @@ def print_list():
 
 def user_input():
     # allows for user input
-    while input("Would you like to continue?\n") == 'yes':
-        new = input('Enter a value\n')
+    # while input("Would you like to continue?\n") == 'yes':
+    new = input('Enter a value\n')
 
-        # check if values exists in the list
-        if new in coins:
-            print('Already exists in the list')
-            user_input()
-        # appends list and prints updated list
-        else:
-            coins.append(new)
-            k = 0
-            while k < len(coins):
-                print(cg.get_price(ids=coins[k], vs_currencies='usd'))
-                k += 1
-
+    # check if values exists in the list
+    if new in coins:
+        print('Already exists in the list')
+        user_input()
+    # appends list and prints updated list
+    else:
+        coins.append(new)
+        k = 0
+        while k < len(coins):
+            print(cg.get_price(ids=coins[k], vs_currencies='usd'))
+            k += 1
+    user_input()
 
 print_list()
