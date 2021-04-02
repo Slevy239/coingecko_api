@@ -22,11 +22,11 @@ def print_list():
 def user_input():
     # allows for user input
     # while input("Would you like to continue?\n") == 'yes':
-    new = input('Enter a value\n')
+    new = input('Enter a value\n').strip()
 
     # check if values exists in the list
     if new in coins:
-        print('Already exists in the list')
+        print('Already exists in the list\n')
         user_input()
     # appends list and prints updated list
     else:
@@ -36,5 +36,6 @@ def user_input():
             print(cg.get_price(ids=coins[k], vs_currencies='usd'))
             k += 1
     user_input()
+
 
 print_list()
