@@ -1,6 +1,7 @@
 # Editors
 .vscode/
 .idea/
+config.py
 
 # Vagrant
 .vagrant/
