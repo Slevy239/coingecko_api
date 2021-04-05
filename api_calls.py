@@ -1,19 +1,22 @@
 from pycoingecko import CoinGeckoAPI
 import etherscan
+import config
 
 cg = CoinGeckoAPI()
 
 btc = 'bitcoin'
 uni = 'uniswap'
 link = 'chainlink'
-coins = [btc, uni, link]
+xtk = 'xtoken'
+aave = 'aave'
+coins = [btc, uni, link, xtk, aave]
 
 es = etherscan.Client(
-    api_key='**************',
+    api_key=config.api_key,
     cache_expire_after=5,
 )
-wallet = es.get_eth_balance('********')
-wei = wallet * 10 **-18
+wallet = es.get_eth_balance(config.address)
+wei = wallet * 10 ** -18
 gas = es.get_gas_price()
 eth_price = es.get_eth_price()
 
@@ -22,7 +25,7 @@ for i in eth_price:
     eth_usd.append(eth_price[i])
 print("Ethereum: ", eth_usd[2])
 print(gas * 10 ** -9, ' GWEI')
-print(wei, ' ETH')
+print(round(wei, 2), ' ETH')
 print(round(wei * eth_usd[2], 2), " USD")
 
 
@@ -56,3 +59,22 @@ def user_input():
 
 
 print_list()
+
+
+class Token:
+    """Represents a token"""
+    def __init__(self, name, contract, price):
+        self._name = name
+        self._contract = contract
+        self._price = price
+
+    def get_name(self):
+        return self._name
+
+    def get_contract(self):
+        return self._contract
+
+    def get_price(self):
+        return self._price
+
+
