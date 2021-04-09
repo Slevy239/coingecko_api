@@ -60,21 +60,3 @@ def user_input():
 
 print_list()
 
-
-class Token:
-    """Represents a token"""
-    def __init__(self, name, contract, price):
-        self._name = name
-        self._contract = contract
-        self._price = price
-
-    def get_name(self):
-        return self._name
-
-    def get_contract(self):
-        return self._contract
-
-    def get_price(self):
-        return self._price
-
-
