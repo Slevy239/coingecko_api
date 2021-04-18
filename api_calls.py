@@ -24,7 +24,6 @@ for i in eth_price:
     eth_usd.append(eth_price[i])
 
 print("Ethereum: ", eth_usd[2])
-
 if round(gas) > 100:
     print("Gas is too damn high!")
 else:
@@ -47,22 +46,17 @@ def user_input():
     # allows for user input
     # while input("Would you like to continue?\n") == 'yes':
     new = input('Enter a value\n').strip()
-    if new not in coins:
-        print("input is not compatible. Try again!")
+    if new in coins:
+        print('Already exists in the list\n')
         user_input()
-    else:
-        # check if values exists in the list
-        if new in coins:
-            print('Already exists in the list\n')
-            user_input()
         # appends and prints updated list
-        else:
-            coins.append(new)
-            k = 0
-            while k < len(coins):
-                print(cg.get_price(ids=coins[k], vs_currencies='usd'))
-                k += 1
-        user_input()
+    else:
+        coins.append(new)
+        k = 0
+        while k < len(coins):
+            print(cg.get_price(ids=coins[k], vs_currencies='usd'))
+            k += 1
+    user_input()
 
 
 print_list()
