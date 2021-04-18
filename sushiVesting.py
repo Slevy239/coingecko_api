@@ -1,6 +1,6 @@
-import re, json, requests
+import json
+import requests
 import config
-
 
 # Potential Sushiswap farm rewards
 
