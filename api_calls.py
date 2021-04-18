@@ -47,6 +47,7 @@ def user_input():
     # while input("Would you like to continue?\n") == 'yes':
     new = input('Enter a value\n').strip()
     if new in coins:
+        raise InvalidInputError()
         print('Already exists in the list\n')
         user_input()
         # appends and prints updated list
@@ -57,6 +58,10 @@ def user_input():
             print(cg.get_price(ids=coins[k], vs_currencies='usd'))
             k += 1
     user_input()
+
+
+class InvalidInputError(BaseException):
+    pass
 
 
 print_list()
