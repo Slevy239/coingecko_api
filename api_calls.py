@@ -25,7 +25,7 @@ for i in eth_price:
 
 print("Ethereum: ", eth_usd[2])
 if round(gas) > 100:
-    print("Gas is too damn high!")
+    print("Gas is too damn high!", gas)
 else:
     print(round(gas), ' GWEI')
 print(round(wei, 2), ' ETH')
@@ -62,6 +62,7 @@ def user_input():
 
 class InvalidInputError(BaseException):
     pass
+
 
 
 print_list()
